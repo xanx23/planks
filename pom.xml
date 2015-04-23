@@ -2,41 +2,51 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.francis</groupId>
-	<artifactId>franmework</artifactId>
+	<groupId>br.com.planks</groupId>
+	<artifactId>planks</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Franmework</name>
+	<name>Planks</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.8</jdk.version>
+		<mvnCompilerPlugin.version>3.3</mvnCompilerPlugin.version>
+		<mvnJarPlugin.version>2.6</mvnJarPlugin.version>
+	</properties>
 
 	<build>
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
 			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
 		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${mvnCompilerPlugin.version}</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${mvnJarPlugin.version}</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<archive>
+						<manifest>
+							<mainClass>br.com.planks.Planks</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 </project>
