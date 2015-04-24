@@ -1,12 +1,18 @@
 package br.com.planks;
 
-import javax.swing.JFrame;
+import java.awt.EventQueue;
 
 public class Planks {
 
 	public static void main(String[] args) {
-		JFrame j = new JFrame();
-		j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		j.setVisible(true);
+		EventQueue.invokeLater(new PlanksRunnable());
+	}
+
+	private static class PlanksRunnable implements Runnable {
+
+		public void run() {
+			PlanksFrame frame = new PlanksFrame();
+			frame.setVisible(true);
+		}
 	}
 }
